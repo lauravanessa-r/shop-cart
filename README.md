@@ -83,7 +83,7 @@ git clone https://github.com/lauravanessa-r/shop-cart.git
 ## Author
 
 **Laura Reinoso** — Statistician · Data Annotator · Front-end Developer
-[LinkedIn](https://www.linkedin.com/in/laura-reinoso-a04321371) · [GitHub](https://github.com/lauravanessa-r)
+[GitHub](https://github.com/lauravanessa-r)
 
 ## License
 
