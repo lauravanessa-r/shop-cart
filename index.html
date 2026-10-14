@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rose’s Store · Demo Shop</title>
+  <meta name="description" content="Demo online store with product search, filters and a shopping cart built with vanilla JavaScript." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <p class="demo-banner">Demo project · Fictional store · No real purchases or payments</p>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a class="logo" href="#">Rose’s <span>Store</span></a>
+      <button class="cart-button" id="cart-open" type="button" aria-label="Open cart" aria-controls="cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="9" cy="20" r="1.5" /><circle cx="18" cy="20" r="1.5" />
+          <path d="M2 3h3l2.5 12h11.5l2-8H6.2" />
+        </svg>
+        <span>Cart</span>
+        <span class="cart-button__count" id="cart-count">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Small things for everyday life</h1>
+      <p>Free shipping on orders over $50. Use the code <strong>WELCOME10</strong> for 10% off your first order.</p>
+    </section>
+
+    <section class="toolbar" aria-label="Search and filters">
+      <label class="search">
+        <span class="sr-only">Search products</span>
+        <input type="search" id="search" placeholder="Search products…" autocomplete="off" />
+      </label>
+      <div class="chips" id="categories" role="group" aria-label="Filter by category"></div>
+      <label class="sort">
+        <span>Sort by</span>
+        <select id="sort">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: low to high</option>
+          <option value="price-desc">Price: high to low</option>
+          <option value="name">Name (A–Z)</option>
+          <option value="rating">Best rated</option>
+        </select>
+      </label>
+    </section>
+
+    <p class="results-count" id="results-count" aria-live="polite"></p>
+    <section class="grid" id="product-grid" aria-label="Products"></section>
+    <p class="empty" id="no-results" hidden>No products match your search. Try another word or category.</p>
+  </main>
+
+  <!-- Cart drawer -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="cart" id="cart" aria-label="Shopping cart" aria-hidden="true" inert>
+    <div class="cart__head">
+      <h2>Your cart</h2>
+      <button class="icon-btn" id="cart-close" type="button" aria-label="Close cart">✕</button>
+    </div>
+
+    <div class="cart__body">
+      <p class="empty" id="cart-empty">Your cart is empty.</p>
+      <ul class="cart__items" id="cart-items"></ul>
+    </div>
+
+    <div class="cart__foot" id="cart-foot">
+      <div class="shipping-progress" id="shipping-progress">
+        <p id="shipping-text"></p>
+        <div class="shipping-progress__bar"><div id="shipping-fill"></div></div>
+      </div>
+
+      <form class="discount" id="discount-form">
+        <label class="sr-only" for="discount-input">Discount code</label>
+        <input id="discount-input" placeholder="Discount code" autocomplete="off" />
+        <button class="btn btn--secondary" type="submit">Apply</button>
+      </form>
+      <p class="discount__msg" id="discount-msg" aria-live="polite"></p>
+
+      <dl class="totals">
+        <div><dt>Subtotal</dt><dd id="t-subtotal">$0.00</dd></div>
+        <div id="row-discount" hidden><dt>Discount</dt><dd id="t-discount">−$0.00</dd></div>
+        <div><dt>Shipping</dt><dd id="t-shipping">$0.00</dd></div>
+        <div class="totals__total"><dt>Total</dt><dd id="t-total">$0.00</dd></div>
+      </dl>
+      <button class="btn btn--primary btn--block" id="checkout" type="button">Place order (demo)</button>
+    </div>
+  </aside>
+
+  <!-- Order confirmation -->
+  <dialog class="modal" id="order-modal">
+    <h2>Order confirmed 🎉</h2>
+    <p>This is a demo, so no payment was made and nothing will be shipped.</p>
+    <p>Order number: <strong id="order-number"></strong></p>
+    <p>Total: <strong id="order-total"></strong></p>
+    <button class="btn btn--primary btn--block" id="modal-close" type="button">Continue shopping</button>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <footer class="footer">
+    <div class="container">Built by Laura Reinoso · HTML, CSS and JavaScript · Rose’s Store is a fictional brand</div>
+  </footer>
+
+  <script src="js/products.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
